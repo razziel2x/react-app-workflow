@@ -1,5 +1,5 @@
 module.exports = {
-  braces: "main",
+  branches: "main",
   repositoryUrl: "https://github.com/razziel2x/react-app-workflow",
   plugins: [
     "@semantic-release/commit-analyzer",
