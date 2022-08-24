@@ -18,6 +18,7 @@ function App() {
         >
           Learn React
         </a>
+        <p>Hello from GitHub CI</p>
       </header>
     </div>
   );
