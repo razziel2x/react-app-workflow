@@ -7,10 +7,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Cache node_modules
+      - name: Cache node-modules
         uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -21,30 +21,30 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - run: npm i --save node-pre-gyp
-      #- run: npm ci
+      - run: npm CI
       - run: npm run format:check
       - run: npm test -- --coverage
         env:
           CI: true
-      - name: Upload test coverage
+      - name: Upload Test Coverage
         uses: actions/upload-artifact@v1
         with:
           name: code-coverage
           path: coverage
-      - name: Build projects
+      - name: Build Projects
       - if: github.event_name == 'push'
       - run: npm run build
-      - name: Upload build folder
+      - name: Upload Build Folder
       - if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
         with:
           name: build
           path: build
       - uses: actions/download-artifact
-      - name: Deploy to staging
+
+      - name: Deploy to Staging
         if: github.event_name == 'push'
-        run: npx surge --project ./build --domain envious-selection.surge.sh
+        run: npx surge --project ./build --domain silent-apparatus.surge.sh
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
