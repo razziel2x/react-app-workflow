@@ -47,9 +47,9 @@ jobs:
           name: build
           path: build
 
-      - name: Download artifact
-        if: github.event_name == 'push'
-        uses: actions/download-artifact
+#      - name: Download artifact
+#        if: github.event_name == 'push'
+#        uses: actions/download-artifact
 
       - name: Deploy to staging
         if: github.event_name == 'push'
